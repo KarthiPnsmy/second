@@ -1,4 +1,14 @@
 Second::Application.routes.draw do
+  #resources :comments
+  #
+  #resources :products
+
+  resources :products do
+
+    resources :comments
+
+  end
+
   resources :users
   resources :user_sessions
   match 'login' => 'user_sessions#new', :as => :login

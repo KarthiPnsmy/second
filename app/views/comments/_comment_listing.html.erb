@@ -1,0 +1,10 @@
+<% for comment in @comments %>
+    <table cellspacing="7px" cellpadding="3px">
+      <tr>
+        <td><%= comment.body %></td>
+      </tr>
+      <tr>
+        <td>by <i><%= comment.user %></i></td>
+      </tr>
+    </table>
+<% end %>

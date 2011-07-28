@@ -1,0 +1,41 @@
+
+<p id="notice"><%= notice %></p>
+
+<h2>Product :: <%= @product.name %></h2>
+
+<p>
+  <b>Name:</b>
+  <%= @product.name %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @product.description %>
+</p>
+
+<p>
+  <b>Price:</b>
+  <%= @product.price %>
+</p>
+
+
+<%= link_to 'Edit', edit_product_path(@product) %> |
+<%= link_to 'Back', products_path %>
+
+<h3>Comments :: <%= @product.name %></h3>
+
+<% unless @comments.blank? %>
+    <%= render '/comments/comment_listing' %>
+<% else %>
+    <b>There is no comments right now</b>
+<% end %>
+
+<% if current_user %>
+<h3>Post comment as <i><%= current_user.username %></i> </h3>
+<%#= render '/comment/form'%>
+<%= render :partial => "/comments/form", :locals => { :comment => @comment, :product => @product  } %>
+<% else %>
+<p>Login to post comment</p>
+<% end %>
+
+

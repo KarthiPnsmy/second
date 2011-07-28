@@ -1,0 +1,24 @@
+<%= form_for @comment, :url => "/products/#{@product.id}/comments" do |f| %>
+  <% if @comment.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@comment.errors.count, "error") %> prohibited this comment from being saved:</h2>
+
+      <ul>
+      <% @comment.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :body %><br />
+    <%= f.text_field :body %>
+  </div>
+<%= hidden_field_tag('comment[product_id]', params[:id]) %>
+<%= hidden_field_tag('comment[user]', current_user.username) %>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
